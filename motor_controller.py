@@ -39,6 +39,12 @@ class MotorController(object):
         slower_motor = self.left_motor if dir == Direction.LEFT else self.right_motor
         self.__set_motor(speed, faster_motor)
         self.__set_motor(speed * (1 - severity / 100), slower_motor)
+    
+    def skid_steer(self, dir: Direction, speed: int):
+        forward_motor = self.right_motor if dir == Direction.LEFT else self.left_motor
+        backward_motor = self.left_motor if dir == Direction.LEFT else self.right_motor
+        self.__set_motor(speed, forward_motor)
+        self.__set_motor(-speed, backward_motor)
         
 
     def set_left(self, speed: int):
