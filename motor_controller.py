@@ -55,7 +55,6 @@ class MotorController(object):
     
     def __set_motor(self, speed: int, motor: Raspi_DCMotor):
         mode, output_speed = self.__get_mode_and_converted_speed(speed)
-        print("converted speed: " + str(output_speed))
         motor.setSpeed(output_speed)
         motor.run(mode)
     
