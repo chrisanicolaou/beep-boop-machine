@@ -18,15 +18,15 @@ class EncoderCounter(object):
     
     def __on_pin_changed(self, _, state):
         if self.state == state:
-            self.logger.info(f"COUNT SKIPPED DUE TO DUPLICATE STATE! Pin number: {self.pin_num}. Count before increment: {self.pulse_count}. _: {_}. State: {state}")
+            # self.logger.info(f"COUNT SKIPPED DUE TO DUPLICATE STATE! Pin number: {self.pin_num}. Count before increment: {self.pulse_count}. _: {_}. State: {state}")
             return
-        self.logger.info(f"COUNT DETECTED. Pin number: {self.pin_num}. Count before increment: {self.pulse_count}. _: {_}. State: {state}")
+        # self.logger.info(f"COUNT DETECTED. Pin number: {self.pin_num}. Count before increment: {self.pulse_count}. _: {_}. State: {state}")
         self.state = state
         self.pulse_count += self.direction
 
     def __setup_logger(self):
         file_name = os.path.basename(__file__)
-        logging.basicConfig(level=logging.INFO)
+        logging.basicConfig(level=logging.WARN)
         self.logger = logging.getLogger(file_name)
         self.logger.setLevel(logging.INFO)
     
